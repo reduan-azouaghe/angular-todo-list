@@ -1,5 +1,6 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, inject, Output } from '@angular/core';
 import { TodoService } from '../services/todo.service';
+import { TodoListFilter } from '../enums/filterEnum';
 
 @Component({
   selector: 'app-todo-create',
@@ -7,11 +8,29 @@ import { TodoService } from '../services/todo.service';
   styleUrls: ['./todo-create.component.css'],
 })
 export class TodoCreateComponent {
-  @Output('newTodo') newTodo = new EventEmitter<string>();
+  private readonly todoService = inject(TodoService);
 
-  todo: string = '';
+  @Output() newTodo = new EventEmitter<string>();
+  @Output() toggleFilter = new EventEmitter<TodoListFilter>();
 
-  submit() {
-    this.newTodo.emit(this.todo);
+  todo = '';
+  filter: TodoListFilter = TodoListFilter.None;
+
+  submit(): void {
+    if (this.todo) {
+      this.newTodo.emit(this.todo);
+    }
+  }
+
+  onToggleFilter(): void {
+    if (this.filter == TodoListFilter.None) {
+      this.filter = TodoListFilter.ShowCheckedOnly
+    } else if (this.filter == TodoListFilter.ShowCheckedOnly) {
+      this.filter = TodoListFilter.ShowUncheckedOnly
+    } else if (this.filter == TodoListFilter.ShowUncheckedOnly) {
+      this.filter = TodoListFilter.None
+    }
+
+    this.toggleFilter.emit(this.filter);
   }
 }

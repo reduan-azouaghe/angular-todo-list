@@ -1,10 +1,14 @@
-<form #form="ngForm" (ngSubmit)="submit(); form.resetForm()">
-  <input
-    type="text"
-    placeholder="todo: clean room"
-    name="todo"
-    [(ngModel)]="todo"
-    required
-  />
-  <button>Create</button>
+<form #form="ngForm" (ngSubmit)="submit(); form.resetForm()" class="form-container">
+  <div class="actions">
+    <input
+      type="text"
+      placeholder="todo: clean room"
+      name="todo"
+      [(ngModel)]="todo"
+      required
+    />
+
+    <button type="submit">Create</button>
+    <button type="button" (click)="onToggleFilter()">Toggle Filter</button>
+  </div>
 </form>

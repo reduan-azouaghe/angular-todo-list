@@ -1,15 +1,19 @@
-:host {
-  display: block;
-  box-sizing: border-box;
-}
-
-form {
+.form-container {
   display: flex;
-  gap: 4px;
+  gap: 0.1rem;
 }
 
-input {
-  flex: 1;
-  font-size: 14px;
-  padding: 0.2em;
+.actions {
+  display: flex;
+  align-items: center;
+  flex: 1;           /* allow .actions to expand */
+}
+
+.actions input {
+  flex: 1;           /* make input stretch to fill available space */
+  min-width: 0;      /* prevents overflow when flexed */
+}
+
+.actions button {
+  flex-shrink: 0;    /* keep buttons their natural size */
 }

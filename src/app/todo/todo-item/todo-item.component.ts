@@ -7,8 +7,8 @@ import { Todo } from '../models/todo';
   styleUrls: ['./todo-item.component.css'],
 })
 export class TodoItemComponent {
-  @Input('todo') todo: Todo | null = null;
-  @Output('update') update = new EventEmitter<Todo>();
+  @Input() todo: Todo | null = null;
+  @Output() update = new EventEmitter<Todo>();
 
   toggleCompleted() {
     if (!this.todo) {

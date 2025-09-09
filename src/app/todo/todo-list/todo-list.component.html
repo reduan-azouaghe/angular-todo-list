@@ -1,6 +1,16 @@
-<app-todo-create (newTodo)="newTodo($event)"></app-todo-create>
-<app-todo-item
-  *ngFor="let todo of todos | async"
-  [todo]="todo"
-  (update)="updateTodo($event)"
-></app-todo-item>
+<app-todo-create
+  (newTodo)="newTodo($event)"
+  (toggleFilter)="toggleFilter($event)">
+</app-todo-create>
+
+<ng-container *ngIf="visibleTodos$ | async as todos; else loading">
+  <app-todo-item
+    *ngFor="let todo of todos"
+    [todo]="todo"
+    (update)="updateTodo($event)">
+  </app-todo-item>
+</ng-container>
+
+<ng-template #loading>
+  <p>loading..</p>
+</ng-template>
