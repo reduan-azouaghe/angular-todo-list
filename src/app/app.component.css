@@ -3,9 +3,3 @@
   justify-content: center;
 }
 
-.todo-container {
-  display: flex;
-  flex-direction: column;
-  padding-top: 0.5em;
-  width: 30vw;
-}

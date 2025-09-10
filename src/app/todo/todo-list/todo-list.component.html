@@ -1,13 +1,19 @@
 <app-todo-create
   (newTodo)="newTodo($event)"
-  (toggleFilter)="toggleFilter($event)">
+  (toggleFilter)="toggleFilter($event)"
+>
 </app-todo-create>
 
-<ng-container *ngIf="visibleTodos$ | async as todos; else loading">
+<ng-container
+  class="list-container"
+  *ngIf="visibleTodos$ | async as todos; else loading"
+>
   <app-todo-item
+    class="item-list-container"
     *ngFor="let todo of todos"
     [todo]="todo"
-    (update)="updateTodo($event)">
+    (update)="updateTodo($event)"
+  >
   </app-todo-item>
 </ng-container>
 
