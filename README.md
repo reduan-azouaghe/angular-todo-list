@@ -27,7 +27,6 @@ implement the following requirements:
 - By default - only display non-completed todos
 - Have a button that allows the user to toggle between completed and non-completed todos
 
-
 ## Freedom
 
 if you want a bit more of a challenge, check out the freedom branch! It starts from a blank slate.
